@@ -1,0 +1,4 @@
+﻿  Source.cpp
+c:\users\rekai\documents\visual studio 2015\projects\area of circle calc\area of circle calc\source.cpp(27): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Area of Circle Calc.vcxproj -> c:\users\rekai\documents\visual studio 2015\Projects\Area of Circle Calc\Debug\Area of Circle Calc.exe
+  Area of Circle Calc.vcxproj -> c:\users\rekai\documents\visual studio 2015\Projects\Area of Circle Calc\Debug\Area of Circle Calc.pdb (Full PDB)

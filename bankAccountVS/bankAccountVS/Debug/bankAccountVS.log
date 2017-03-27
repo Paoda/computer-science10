@@ -1,0 +1,4 @@
+﻿  Source.cpp
+c:\users\rekai\documents\git repositories\computer-science\bankaccountvs\bankaccountvs\source.cpp(36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  bankAccountVS.vcxproj -> C:\Users\Rekai\Documents\Git Repositories\computer-science\bankAccountVS\Debug\bankAccountVS.exe
+  bankAccountVS.vcxproj -> C:\Users\Rekai\Documents\Git Repositories\computer-science\bankAccountVS\Debug\bankAccountVS.pdb (Full PDB)

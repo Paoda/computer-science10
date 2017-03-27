@@ -1,0 +1,5 @@
+﻿  Source.cpp
+c:\users\rekai\documents\git repositories\computer-science\population\population\source.cpp(20): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\rekai\documents\git repositories\computer-science\population\population\source.cpp(15): warning C4101: 'count': unreferenced local variable
+  population.vcxproj -> C:\Users\Rekai\Documents\Git Repositories\computer-science\population\Debug\population.exe
+  population.vcxproj -> C:\Users\Rekai\Documents\Git Repositories\computer-science\population\Debug\population.pdb (Full PDB)

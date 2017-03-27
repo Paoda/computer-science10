@@ -1,0 +1,4 @@
+﻿  Source.cpp
+c:\users\rekai\documents\visual studio 2015\projects\the jogger\the jogger\source.cpp(22): warning C4101: 'totalFeet': unreferenced local variable
+  The Jogger.vcxproj -> c:\users\rekai\documents\visual studio 2015\Projects\The Jogger\Debug\The Jogger.exe
+  The Jogger.vcxproj -> c:\users\rekai\documents\visual studio 2015\Projects\The Jogger\Debug\The Jogger.pdb (Full PDB)

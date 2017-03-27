@@ -1,0 +1,6 @@
+﻿  Source.cpp
+c:\users\rekai\documents\git repositories\computer-science\looppractice\looppractice\source.cpp(22): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\rekai\documents\git repositories\computer-science\looppractice\looppractice\source.cpp(18): warning C4101: 'base': unreferenced local variable
+c:\users\rekai\documents\git repositories\computer-science\looppractice\looppractice\source.cpp(18): warning C4101: 'num': unreferenced local variable
+  loopPractice.vcxproj -> C:\Users\Rekai\Documents\Git Repositories\computer-science\loopPractice\Debug\loopPractice.exe
+  loopPractice.vcxproj -> C:\Users\Rekai\Documents\Git Repositories\computer-science\loopPractice\Debug\loopPractice.pdb (Full PDB)

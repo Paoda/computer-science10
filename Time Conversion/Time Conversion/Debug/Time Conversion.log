@@ -1,0 +1,4 @@
+﻿  Source.cpp
+c:\users\rekai\documents\visual studio 2015\projects\time conversion\time conversion\source.cpp(17): warning C4101: 'minutesR': unreferenced local variable
+  Time Conversion.vcxproj -> c:\users\rekai\documents\visual studio 2015\Projects\Time Conversion\Debug\Time Conversion.exe
+  Time Conversion.vcxproj -> c:\users\rekai\documents\visual studio 2015\Projects\Time Conversion\Debug\Time Conversion.pdb (Full PDB)

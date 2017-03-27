@@ -1,0 +1,5 @@
+﻿  Source.cpp
+c:\users\rekai\documents\git repositories\computer-science\falling\falling\source.cpp(21): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\rekai\documents\git repositories\computer-science\falling\falling\source.cpp(43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  falling.vcxproj -> C:\Users\Rekai\Documents\Git Repositories\computer-science\falling\Debug\falling.exe
+  falling.vcxproj -> C:\Users\Rekai\Documents\Git Repositories\computer-science\falling\Debug\falling.pdb (Full PDB)
