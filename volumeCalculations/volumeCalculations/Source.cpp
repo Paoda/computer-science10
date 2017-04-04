@@ -54,8 +54,7 @@ int getVolume(int length, int width, int height) {
 	return length * width * height; // V = length * width * height
 }//end Volume
 int getSurfaceArea(int length, int width, int height) {
-
-	return 2 * ((width * length) + (height * length) + (height * width)); // A  = 2(wl + hl + hw)
+	return 2 * ((width * length) + (height * length) + (height * width)); // SA  = 2(wl + hl + hw)
 }// end surfaceArea
 void displayData(int length, int width, int height, int volume, int surfaceArea) { //No need to return anything here so we'll use void
 	cout << "The dimensions of your box are " << length << "cm x " << width << "cm x " << height << "cm.";
