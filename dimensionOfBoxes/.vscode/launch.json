@@ -7,7 +7,7 @@
             "type": "cppdbg",
             "request": "launch",
             "preLaunchTask": "g++",
-            "program": "enter program name, for example ${workspaceRoot}/a.out",
+            "program": "${workspaceRoot}/a.out",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",

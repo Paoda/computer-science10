@@ -17,9 +17,9 @@ void calcMeasures(int inchF, float &feetF, float &yardsF, float &milesF);
 void processAnother(char &repeatF);
 
 int main () {
-    //setting up setprecision();
-    cout.setf(ios::fixed, ios::floatfield);
-    cout.setf(ios::showpoint);
+        //setting up setprecision();
+        cout.setf(ios::fixed, ios::floatfield);
+        cout.setf(ios::showpoint);
 
     int inches; //handles user input
     char repeat; //Handels the Y or N for continuing the loop

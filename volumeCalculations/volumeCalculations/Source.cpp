@@ -48,8 +48,6 @@ int main() {
 	return 0;
 }//end main
 
-//
-
 int getVolume(int length, int width, int height) {
 	return length * width * height; // V = length * width * height
 }//end Volume
