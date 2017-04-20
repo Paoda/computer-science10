@@ -40,9 +40,6 @@ int main() {
 		else if (menuInput == 'Y' || menuInput == 'y') {
 			continue; //This means the user wants to run the program again.
 		}
-		else {
-			//Maybe consider structuring this differently later
-		}
 	} while (menuInput != 'N');
 
 	return 0;
