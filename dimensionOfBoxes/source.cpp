@@ -1,5 +1,11 @@
 /*
-Some Information Here
+Name: Rekai Musuka
+Date: 12 April 2017
+Assignment Name: Dimension of boxes
+Program Description: Program that will calculate the dimensions of a box, what makes it special
+is if you enter a 0, it will calculate
+Inputs: length, width, height, volume, surfaceArea, Yes or No.
+Outputs: length, width, height, volume and Surface Area of a box.
 */
 
 #include <iostream>
@@ -28,6 +34,7 @@ int main() {
 
     }while(choice != 'N');
 
+    return 0;
 }
 
 void boxDimensions(float &lengthF, float &widthF, float &heightF, float &volumeF) {
