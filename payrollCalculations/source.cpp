@@ -20,28 +20,34 @@ Union Dues: 0.4%
 
 */
 
-float grossIncome(float hoursWorkedF);
-float calcTaxes(float grossPayF);
-float displayReceipt();
-
 #include <iostream>
 #include <iomanip>
 
+float calcIncome(float hoursWorkedF);
+float calcTaxes(float grossPayF);
+void displayReceipt(float hoursWorkedF, float regularPayF, float overtimePayF, float grossPayF);
+
 using namespace std;
+
+const float hourlyPay = 10.50;
+const float taxRate = 0.31;
+const float cpp = 0.024;
+const float uip = 0.019;
+const float unionDues = 0.004;
 
 int main()
 {
-    float hoursWorked grossPay, netPay;
+    float hoursWorked, grossPay, netPay;
     cout << "Please enter in the amount of Hours you have worked.";
     cin >> hoursWorked;
 
-    grossPay = grossIncome(hoursWorked);
-    netpay = calcTaxes(grossPay);
-
+    calcIncome(hoursWorked); //Returns Gross Income, Overtime Pay, Regular Pay
+    netPay = calcTaxes(grossPay);
+    displayReceipt(hoursWorked, 0, 0, grossPay);
     return 0;
 }
 
-float grossIncome(float hoursWokedF)
+float calcIncome(float hoursWorkedF, float &regularPayF)
 {
     float grossPayF;
     /*
@@ -51,24 +57,31 @@ float grossIncome(float hoursWokedF)
     */
     if (hoursWorkedF < 40)
     {
-        grossPayF = hoursWorked * 10.5;
+        float regularPayF = hoursWorkedF * 10.5;
     }
     else if (hoursWorkedF < 45)
     {
+        float regularPayF = 40 * 10.5;
+
         hoursWorkedF = hoursWorkedF - 40;
-        grossPayF = (40 * 10.5) + (hoursWorkedF * (10.5 * 1.5));
+        float overtimePayF = hoursWorkedF * (10.5 * 1.5));
     }
-    else if (hoursWorked > 45)
+    else if (hoursWorkedF > 45)
     {
+        float regularPayF = 40 * 10.5;
+        overtimePayF = 5 * (10.5 * 1.5);
+
         hoursWorkedF = hoursWorkedF - 45;
         grossPayF = (40 * 10.5) + (5 * (10.5 * 1.5)) + (hoursWorkedF * (10.5 * (10.5 * 2)));
     }
 
-    return grossPayF
-} //end grossIncome
+    grossPayF = regularPayF + overtimePayF +;
+} //end calcIncome
 
 float calcTaxes(float grossPayF) {
     float taxedAmountF, netPayF;
+
+    //Figure out some way to keep the individual values of each tax deduciton.
 
     taxedAmountF = grossPayF * 0.31; //Tax
     taxedAmountF += grossPayF * 0.024; //CPP
@@ -80,7 +93,12 @@ float calcTaxes(float grossPayF) {
     return netPayF;
 } //end calcTaxes
 
-float displayReceipt()
-{
+void displayReceipt(float hoursWorkedF, float regularPayF, float overtimePayF, float grossPayF) {
+    cout << "Hours Worked: " << hoursWorkedF;
+    cout << "\n\n";
+    cout << "Regular pay: " << regularPayF;
+    cout << "\nOvertime pay: " << overtimePayF; 
+    cout << "\n-------------------";
+    cout << "\nTotal Gross Pay: " << grossPayF << endl;;
 
-} //end displayReceipt
+}//end displayReceipt
