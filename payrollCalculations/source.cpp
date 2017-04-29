@@ -44,7 +44,7 @@ int main() {
     cin >> hoursWorked;
     cout << "\n";
 
-    try {
+    try { //try and catch commands used to handle exceptions.
         calcPay(hoursWorked, regularPay, overtimePay, restOfPay, grossPay);
     }catch(invalid_argument &e) { //listens for a thrown invalid_argument
         cerr << e.what() << endl;
@@ -86,7 +86,7 @@ void calcPay(int hoursWorkedF, float &regularPayF, float &overtimePayF, float re
 }//end calcPay
 
 void calcTax(float grossPayF, float &taxF, float &cppF, float &uipF, float &unionDuesF, float &totalDeductionsF, float &netPayF) {
-    taxF = grossPayF * taxRate;
+    taxF = grossPayF * taxRate; 
     cppF = grossPayF * cppRate;
     uipF = grossPayF * uipRate;
     unionDuesF = grossPayF * unionDuesRate;
@@ -118,4 +118,4 @@ void displayReceipt(float hoursWorkedF, float regularPayF, float overtimePayF, f
     cout << "\n------------------------";
     cout << "\nNet Pay: $" << netPayF;
 
-}
+}//end displayReceipt
