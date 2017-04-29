@@ -37,6 +37,10 @@ void calcTax(float grossPayF, float &taxF, float &cppF, float &uipF, float &unio
 void displayReceipt(float hoursWorkedF, float regularPayF, float overtimePayF, float grossPayF, float taxF, float cppF, float uipF, float unionDuesF, float totalDeductionsF, float netPayF);
 
 int main() {
+    //setting up setprecision();
+	cout.setf(ios::fixed, ios::floatfield);
+	cout.setf(ios::showpoint);
+
     //Remember some variables are already declared globally
     float hoursWorked, regularPay, overtimePay, restOfPay, grossPay;
     float tax, cpp, uip, unionDues, netPay, totalDeductions;
@@ -99,23 +103,23 @@ void calcTax(float grossPayF, float &taxF, float &cppF, float &uipF, float &unio
 void displayReceipt(float hoursWorkedF, float regularPayF, float overtimePayF, float grossPayF, float taxF, float cppF, float uipF, float unionDuesF, float totalDeductionsF, float netPayF) {
     cout << "Employee Reciept";
     
-    cout << "\n\nHours Worked: " << hoursWorkedF << "h";
+    cout << "\n\nHours Worked: " << setprecision(2) << hoursWorkedF << "h";
     
     cout << "\n\nPay";
-    cout << "\nRegular Pay: $" << regularPayF;
-    cout << "\nOvertime Pay: $" << overtimePayF;
+    cout << "\nRegular Pay: $" << setprecision(2) << regularPayF;
+    cout << "\nOvertime Pay: $" << setprecision(2) << overtimePayF;
     cout << "\n------------------------";
-    cout << "\nTotal Gross Pay: $" << grossPayF;
+    cout << "\nTotal Gross Pay: $" << setprecision(2) << grossPayF;
 
     cout << "\n\nDeductions";
-    cout << "\nTaxes: $" << taxF;
-    cout << "\nCPP: $" << cppF; 
-    cout << "\nUIP: $" << uipF;
-    cout << "\nUnion Dues: $" << unionDuesF;   
+    cout << "\nTaxes: $" << setprecision(2) << taxF;
+    cout << "\nCPP: $" << setprecision(2) << cppF; 
+    cout << "\nUIP: $" << setprecision(2) << uipF;
+    cout << "\nUnion Dues: $" << setprecision(2) << unionDuesF;   
     cout << "\n------------------------";
-    cout << "\nTotal Deductions: $" << totalDeductionsF;
+    cout << "\nTotal Deductions: $" << setprecision(2) << totalDeductionsF;
 
     cout << "\n------------------------";
-    cout << "\nNet Pay: $" << netPayF;
+    cout << "\nNet Pay: $" << setprecision(2) << netPayF;
 
 }//end displayReceipt
