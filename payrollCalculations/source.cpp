@@ -15,90 +15,107 @@ All Relevant Criteria from Assignment Page
 
 Tax: 31%
 CPP: 2.4%
-UIP: 1.9%
+uip: 1.9%
 Union Dues: 0.4%
 
 */
 
 #include <iostream>
 #include <iomanip>
-
-float calcIncome(float hoursWorkedF);
-float calcTaxes(float grossPayF);
-void displayReceipt(float hoursWorkedF, float regularPayF, float overtimePayF, float grossPayF);
+#include <stdexcept>
 
 using namespace std;
 
-const float hourlyPay = 10.50;
-const float taxRate = 0.31;
-const float cpp = 0.024;
-const float uip = 0.019;
-const float unionDues = 0.004;
+const float baseRate =     10.5; //Dollars
+const float taxRate =       0.31; //Percentage
+const float cppRate =       0.024;//Percentage
+const float uipRate =       0.019;//Percentage
+const float unionDuesRate = 0.004;//Percentage
 
-int main()
-{
-    float hoursWorked, grossPay, netPay;
-    cout << "Please enter in the amount of Hours you have worked.";
+void calcPay(int hoursWorkedF, float &regularPayF, float &overtimePayF, float restOfPayF, float &grossPayF);
+void calcTax(float grossPayF, float &taxF, float &cppF, float &uipF, float &unionDuesF, float &totalDeductionsF, float &netPayF);
+void displayReceipt(float hoursWorkedF, float regularPayF, float overtimePayF, float grossPayF, float taxF, float cppF, float uipF, float unionDuesF, float totalDeductionsF, float netPayF);
+
+int main() {
+    //Remember some variables are already declared globally
+    float hoursWorked, regularPay, overtimePay, restOfPay, grossPay;
+    float tax, cpp, uip, unionDues, netPay, totalDeductions;
+    cout << "Welcome to the Payroll Calculater.\nPlease enter your hours for last week.\n:";
     cin >> hoursWorked;
+    cout << "\n";
 
-    calcIncome(hoursWorked); //Returns Gross Income, Overtime Pay, Regular Pay
-    netPay = calcTaxes(grossPay);
-    displayReceipt(hoursWorked, 0, 0, grossPay);
-    return 0;
-}
-
-float calcIncome(float hoursWorkedF, float &regularPayF)
-{
-    float grossPayF;
-    /*
-    < 40h:          $10.5/h
-    41h - 45h:      0.5*.1.5/h 
-    > 45h:          10.5*2 
-    */
-    if (hoursWorkedF < 40)
-    {
-        float regularPayF = hoursWorkedF * 10.5;
-    }
-    else if (hoursWorkedF < 45)
-    {
-        float regularPayF = 40 * 10.5;
-
-        hoursWorkedF = hoursWorkedF - 40;
-        float overtimePayF = hoursWorkedF * (10.5 * 1.5));
-    }
-    else if (hoursWorkedF > 45)
-    {
-        float regularPayF = 40 * 10.5;
-        overtimePayF = 5 * (10.5 * 1.5);
-
-        hoursWorkedF = hoursWorkedF - 45;
-        grossPayF = (40 * 10.5) + (5 * (10.5 * 1.5)) + (hoursWorkedF * (10.5 * (10.5 * 2)));
+    try {
+        calcPay(hoursWorked, regularPay, overtimePay, restOfPay, grossPay);
+    }catch(invalid_argument &e) { //listens for a thrown invalid_argument
+        cerr << e.what() << endl;
+        return -1;
     }
 
-    grossPayF = regularPayF + overtimePayF +;
-} //end calcIncome
-
-float calcTaxes(float grossPayF) {
-    float taxedAmountF, netPayF;
-
-    //Figure out some way to keep the individual values of each tax deduciton.
-
-    taxedAmountF = grossPayF * 0.31; //Tax
-    taxedAmountF += grossPayF * 0.024; //CPP
-    taxedAmountF += grossPayF * 0.019; //UIC
-    taxedAmountF += grossPayF * 0.004; //Union Dues
-
-    netPayF = grossPayF - taxedAmountF;
-
-    return netPayF;
-} //end calcTaxes
-
-void displayReceipt(float hoursWorkedF, float regularPayF, float overtimePayF, float grossPayF) {
-    cout << "Hours Worked: " << hoursWorkedF;
+    calcTax(grossPay, tax, cpp, uip, unionDues, totalDeductions, netPay);
+    displayReceipt(hoursWorked, regularPay, overtimePay, grossPay, tax, cpp, uip, unionDues, totalDeductions, netPay);
     cout << "\n\n";
-    cout << "Regular pay: " << regularPayF;
-    cout << "\nOvertime pay: " << overtimePayF; 
-    cout << "\n-------------------";
-    cout << "\nTotal Gross Pay: " << grossPayF << endl;;
+    return 0;
+};//end main
 
-}//end displayReceipt
+void calcPay(int hoursWorkedF, float &regularPayF, float &overtimePayF, float restOfPayF, float &grossPayF) {
+    if (hoursWorkedF < 0) {
+        throw invalid_argument("Invalid Input."); //throws invalid_argument exception that is included in <stdexcept>
+    }else if (hoursWorkedF < 40) {
+        regularPayF = hoursWorkedF * baseRate;
+
+        //unused
+        overtimePayF = 0;
+        restOfPayF = 0;
+    }else if (hoursWorkedF <= 45) {
+        regularPayF = 40 * baseRate; //Because hoursWorked is already above 40
+        hoursWorkedF = hoursWorkedF - 40; //subtract 40 so that we can isolate the overtime Hours.
+        overtimePayF = hoursWorkedF * (baseRate * 1.5); //Calcualtes overtimePay
+
+        //unused
+        restOfPayF = 0;
+    }else if (hoursWorkedF > 45) {
+        regularPayF = 40 * baseRate; //Because hoursWorked is already above 40
+        overtimePayF = 5 * (baseRate * 1.5); //Calcualtes overtimePay
+        hoursWorkedF = hoursWorkedF - 45;
+        restOfPayF = hoursWorkedF * (baseRate * 2);
+    }else {
+        throw invalid_argument("Invalid input.");
+    };
+
+    grossPayF = regularPayF + overtimePayF + restOfPayF; //calculates 
+}//end calcPay
+
+void calcTax(float grossPayF, float &taxF, float &cppF, float &uipF, float &unionDuesF, float &totalDeductionsF, float &netPayF) {
+    taxF = grossPayF * taxRate;
+    cppF = grossPayF * cppRate;
+    uipF = grossPayF * uipRate;
+    unionDuesF = grossPayF * unionDuesRate;
+
+    totalDeductionsF = taxF + cppF + uipF + unionDuesF;
+
+    netPayF = grossPayF - totalDeductionsF;
+}//end calcTax
+
+void displayReceipt(float hoursWorkedF, float regularPayF, float overtimePayF, float grossPayF, float taxF, float cppF, float uipF, float unionDuesF, float totalDeductionsF, float netPayF) {
+    cout << "Employee Reciept";
+    
+    cout << "\n\nHours Worked: " << hoursWorkedF << "h";
+    
+    cout << "\n\nPay";
+    cout << "\nRegular Pay: $" << regularPayF;
+    cout << "\nOvertime Pay: $" << overtimePayF;
+    cout << "\n------------------------";
+    cout << "\nTotal Gross Pay: $" << grossPayF;
+
+    cout << "\n\nDeductions";
+    cout << "\nTaxes: $" << taxF;
+    cout << "\nCPP: $" << cppF; 
+    cout << "\nUIP: $" << uipF;
+    cout << "\nUnion Dues: $" << unionDuesF;   
+    cout << "\n------------------------";
+    cout << "\nTotal Deductions: $" << totalDeductionsF;
+
+    cout << "\n------------------------";
+    cout << "\nNet Pay: $" << netPayF;
+
+}
