@@ -1,0 +1,4 @@
+build/linux
+build/win
+source.obj
+vc*.pdb

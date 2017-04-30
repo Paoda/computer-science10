@@ -33,7 +33,7 @@ int main() {
     int result = getConversionMethod();
 
     if (result == 0) {
-        cout << "\n\n Something went Horribly Wrong. Trying again.";
+        cout << "\n\nSomething went Horribly Wrong. Trying again.\n\n";
         main();
     }
 
@@ -51,8 +51,9 @@ int getConversionMethod() {
         cin >> choiceF;
 
         if (cin.fail()) {
-            cout << "Invalid Input. Exiting...";
             cin.clear();
+            cin.ignore();
+            cout << "Invalid Input. Exiting...";
             menuExit = true;
         }
 
@@ -64,8 +65,10 @@ int getConversionMethod() {
                 cin >> choiceF;
 
                 if (cin.fail()) {
-                    cout << "Invalid input. Returning to Main Menu.";
                     cin.clear();
+                    cin.ignore();
+                    cout << "Invalid Input. Exiting...";
+                    menuExit = true;
                 }
 
                 if (choiceF == 1) {
@@ -84,8 +87,10 @@ int getConversionMethod() {
                 cin >> choiceF;
 
                 if (cin.fail()) {
-                    cout << "Invalid input. Returning to Main Menu.";
                     cin.clear();
+                    cin.ignore();
+                    cout << "Invalid Input. Exiting...";
+                    menuExit = true;
                 }
 
                 if (choiceF == 1) {
@@ -98,7 +103,7 @@ int getConversionMethod() {
             }while(menuExit == false);
         }
     }while(menuExit == false);
-    
+
     return 0;
 }//end getConversionMethod
 float getTemperatureRange() {
