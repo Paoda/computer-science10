@@ -14,8 +14,8 @@ using namespace std;
 
 //Functions
 int getConversionMethod();
-float getTemperatureRange();
-float displayConversions();
+void getTemperatureRange(float &upperTempF, float &lowerTempF, int &err); 
+void displayConversions();
 float fahrenheitToCelsius(float fahrenheitF);
 float celsiusToFahrenheit(float celsiusF);
 
@@ -33,10 +33,35 @@ int main() {
     int result = getConversionMethod();
 
     if (result == 0) {
-        cout << "\n\nSomething went Horribly Wrong. Trying again.\n\n";
+        cout << "\n\nIllegal Input detected. Fortunately, we can recover from this one.\n\n";
         main();
-    }
+    }else if (result == 1) { //1 = CtoF Single Value
+        
+    }else if (result == 2) { //2 = CtoF Multiple Values
+        float upperTemp, lowerTemp;
+        int choice = 2;
 
+        getTemperatureRange(upperTemp, lowerTemp, int err);
+
+        if (err == 1) {
+            cout << "Illegal Value Entered. Returning to Main Menu.";
+            main();
+        }
+
+    }else if (result == 3) { //3 = FtoC Single Value
+        //Do This
+    }else if (result == 4) { //4 = FtoC Multiple Values
+        float upperTemp, lowerTemp;
+        int choice = 4;
+
+        getTemperatureRange(upperTemp, lowerTemp, int err);
+
+        if (err == 1) {
+            cout << "Illegal Value Entered. Returning to Main Menu.";
+            main();
+            
+        }
+    }
 
 return 0;
 }//end main
@@ -50,10 +75,13 @@ int getConversionMethod() {
         cout << "\n2. Convert Fahrenheit to Celsius\n:";
         cin >> choiceF;
 
-        if (cin.fail()) {
-            cin.clear();
-            cin.ignore();
+        if (cin.fail()) { //If user doesn't enter an integer
+            cin.clear(); //clear all error messages
+            cin.ignore(); //forget what just happened
             cout << "Invalid Input. Exiting...";
+
+            //Variables Needed to Exit the Loop
+            choiceF = 0;
             menuExit = true;
         }
 
@@ -68,15 +96,18 @@ int getConversionMethod() {
                     cin.clear();
                     cin.ignore();
                     cout << "Invalid Input. Exiting...";
+
+                    //variables needed to exit the loop. 
+                    choiceF = 0;
                     menuExit = true;
                 }
 
                 if (choiceF == 1) {
                     menuExit = true;
-                    return 1;
+                    return 1; //1 = CtoF Single Value
                 }else if (choiceF == 2) {
                     menuExit = true;
-                    return 2;
+                    return 2; //2 = CtoF Multiple Values
                 }
             }while(menuExit == false);
         }else if (choiceF == 2) {
@@ -90,15 +121,18 @@ int getConversionMethod() {
                     cin.clear();
                     cin.ignore();
                     cout << "Invalid Input. Exiting...";
+
+                    //Varriables needed to exit the loop
+                    choiceF = 0;
                     menuExit = true;
                 }
 
                 if (choiceF == 1) {
                     menuExit = true;
-                    return 3;
+                    return 3; //3 = FtoC Single Value
                 }else if (choiceF == 2) {
                     menuExit = true;
-                    return 4;
+                    return 4; //4 = FtoC Multiple Values
                 }
             }while(menuExit == false);
         }
@@ -106,8 +140,31 @@ int getConversionMethod() {
 
     return 0;
 }//end getConversionMethod
-float getTemperatureRange() {
-return 0.0;
+void getTemperatureRange(float &upperTempF, float &lowerTempF, int &err) {
+    
+    cout << "\n\nPlease enter the Higest Number you'd like to be converted.\n:";
+    cin >> upperTempF;
+
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore();
+        cout << "Invalid Input. Exiting...";
+
+        err = 1;
+    }
+
+    cout << "\nPlease enter the Lowest Number you'd like to be converted.\n";
+    cin >> lowerTempF;
+
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore();
+        cout << "Invalid Input. Exiting...";
+        
+        err = 1;
+    }
+
+    err = 0;
 }//end getTemperatureRange
 
 float fahrenheitToCelsius(float fahrenheitF) {
@@ -116,4 +173,16 @@ float fahrenheitToCelsius(float fahrenheitF) {
 
 float celsiusToFahrenheit(float celsiusF) {
     return (celsiusF * (9.0 / 5.0)) + 32.0;
+}
+
+void displayConversions(float inputF, ) {
+    if (choice == 2 || choice == 4){ //They will require this function to process multiple values.
+
+    }else { //If not 2 or 4 they have to be 1 or 2 since the program decides the value, not the user.
+        if (choice == 1) {
+            celsius
+        }else {
+
+        }
+    }
 }
