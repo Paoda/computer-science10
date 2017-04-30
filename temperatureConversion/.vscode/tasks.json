@@ -5,5 +5,10 @@
     "command": "g++",
     "isShellCommand": true,
     "args": ["-g","source.cpp"],
-    "showOutput": "always"
+    "showOutput": "always",
+    "windows": {
+        "command": "${workspaceRoot}\\build\\build.bat",
+        "isShellCommand": true,
+        "showOutput": "always"
+    }
 }
