@@ -162,7 +162,7 @@ void getTemperatureRange(int userResultF, float &temperatureF, float &maxTempF) 
             if (cin.fail()) {
                 cin.clear();
                 cin.ignore();
-                throw "Invalid Input (Temperature Input Field (Multiple Values: Minimum Temperature))";
+                throw "Invalid Input (Temperature Input Field (Multiple Values: Maximum Temperature))";
             }
         } catch (char* err) {
             cout << "Error: " << err;
@@ -174,7 +174,33 @@ void displayConversions(int userResultF, float temperatureF, float maxTempF) {
     if (userResultF == 1 || userResultF == 3) {
         cout << temperatureF
     }else {
-        
+        int j;
+        cout << "Please enter the Interval you wish to go by.\n:";
+        cin >> j;
+
+        try {
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore();
+                throw "Invalid Input. (Interval Input Field (Multiple Values))";
+            }
+        } catch (char* err) {
+            cout << "Error: " << err;
+        }
+
+        if (userResult == 2) {
+            cout << "\n\n\tCelsius\t\tFahrenheit";
+
+            for (int i = temperatureF; i < maxTempF; i = i + j) {
+            cout << "\n\t" << 
+            }
+        }else {
+            cout << "\n\n\tFahrenheit\t\tCelsius";
+
+            for (int i = temperatureF; i < maxTempF; i = i + j) {
+                fahrenheitTOCelsius(i);
+            }
+        }
     }
 
 };
