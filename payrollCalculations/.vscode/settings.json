@@ -3,6 +3,7 @@
         "stdexcept": "cpp",
         "iostream": "cpp",
         "xiosbase": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "iosfwd": "cpp"
     }
 }

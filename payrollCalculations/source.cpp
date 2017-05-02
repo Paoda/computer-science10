@@ -32,9 +32,9 @@ const float cppRate =       0.024;//Percentage
 const float uipRate =       0.019;//Percentage
 const float unionDuesRate = 0.004;//Percentage
 
-void calcPay(int hoursWorkedF, float &regularPayF, float &overtimePayF, float restOfPayF, float &grossPayF);
+void calcPay(int hoursWorkedF, float &regularPayF, float &overtimePayF, float &restOfPayF, float &grossPayF);
 void calcTax(float grossPayF, float &taxF, float &cppF, float &uipF, float &unionDuesF, float &totalDeductionsF, float &netPayF);
-void displayReceipt(float hoursWorkedF, float regularPayF, float overtimePayF, float grossPayF, float taxF, float cppF, float uipF, float unionDuesF, float totalDeductionsF, float netPayF);
+void displayReceipt(float hoursWorkedF, float regularPayF, float overtimePayF, float restOfPayF, float grossPayF, float taxF, float cppF, float uipF, float unionDuesF, float totalDeductionsF, float netPayF);
 
 int main() {
     //setting up setprecision();
@@ -56,12 +56,12 @@ int main() {
     }
 
     calcTax(grossPay, tax, cpp, uip, unionDues, totalDeductions, netPay);
-    displayReceipt(hoursWorked, regularPay, overtimePay, grossPay, tax, cpp, uip, unionDues, totalDeductions, netPay);
+    displayReceipt(hoursWorked, regularPay, overtimePay, restOfPay, grossPay, tax, cpp, uip, unionDues, totalDeductions, netPay);
     cout << "\n\n";
     return 0;
 };//end main
 
-void calcPay(int hoursWorkedF, float &regularPayF, float &overtimePayF, float restOfPayF, float &grossPayF) {
+void calcPay(int hoursWorkedF, float &regularPayF, float &overtimePayF, float &restOfPayF, float &grossPayF) {
     if (hoursWorkedF < 0) {
         throw invalid_argument("Invalid Input."); //throws invalid_argument exception that is included in <stdexcept>
     }else if (hoursWorkedF < 40) {
@@ -100,7 +100,7 @@ void calcTax(float grossPayF, float &taxF, float &cppF, float &uipF, float &unio
     netPayF = grossPayF - totalDeductionsF;
 }//end calcTax
 
-void displayReceipt(float hoursWorkedF, float regularPayF, float overtimePayF, float grossPayF, float taxF, float cppF, float uipF, float unionDuesF, float totalDeductionsF, float netPayF) {
+void displayReceipt(float hoursWorkedF, float regularPayF, float overtimePayF, float restOfPayF, float grossPayF, float taxF, float cppF, float uipF, float unionDuesF, float totalDeductionsF, float netPayF) {
     cout << "Employee Reciept";
     
     cout << "\n\nHours Worked: " << setprecision(2) << hoursWorkedF << "h";
@@ -108,6 +108,7 @@ void displayReceipt(float hoursWorkedF, float regularPayF, float overtimePayF, f
     cout << "\n\nPay";
     cout << "\nRegular Pay: $" << setprecision(2) << regularPayF;
     cout << "\nOvertime Pay: $" << setprecision(2) << overtimePayF;
+    cout << "\nPay Past 45h: $" << setprecision(2) << restOfPayF;
     cout << "\n------------------------";
     cout << "\nTotal Gross Pay: $" << setprecision(2) << grossPayF;
 

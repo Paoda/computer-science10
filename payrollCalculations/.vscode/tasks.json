@@ -4,6 +4,11 @@
     "version": "0.1.0",
     "command": "g++",
     "isShellCommand": true,
-    "args": ["-g", "source.cpp"],
-    "showOutput": "always"
+    "args": ["source.cpp", "-o","a.out"],
+    "showOutput": "always",
+    "windows": {
+        "command": "${workspaceRoot}\\build\\build.bat",
+        "isShellCommand": true,
+        "showOutput": "always"
+    }
 }

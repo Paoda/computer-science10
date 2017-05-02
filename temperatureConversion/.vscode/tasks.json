@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "command": "g++",
     "isShellCommand": true,
-    "args": ["-g","source.cpp"],
+    "args": ["${workspaceRoot}/source/source.cpp", "-o","${workspaceRoot}/build/linux/a.out"],
     "showOutput": "always",
     "windows": {
         "command": "${workspaceRoot}\\build\\build.bat",

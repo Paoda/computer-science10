@@ -13,7 +13,7 @@ using namespace std;
 
 int getConversionMethod(); // Complete
 void getTemperatureRange(int userResultF, float &temperatureF, float &maxTempF);
-void displayConversions();
+void displayConversions(int userResultF, float temperatureF, float maxTempF);
 float fahrenheitToCelsius(float fahrenheitF);
 float celsiusToFahrenheit(float celsiusF);
 
@@ -30,6 +30,8 @@ int main() {
             getTemperatureRange(userResult, temperature, maxTemp);
 
             celsiusToFahrenheit(temperature);
+
+            displayConversions(userResult, temperature, maxTemp);
         } else {
             cout << userResult;
             getTemperatureRange(userResult, temperature, maxTemp);
