@@ -101,34 +101,28 @@ int getConversionMethod() {
   } while (menuExit == false);
 }
 
-void getTemperatureRange(int userReusltF) {}
+void getTemperatureRange(int userReusltF) {
+    if (userResultF == 1 || userResultF == 3) { //Single Conversion
+        float temperature;
+        cout << "Please Enter a Temperature";
+        cin >> temperature;
+
+        try {
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore();
+                throw "Invalid Input (Temperature Input Field (Single Value)";
+            }
+        } catch (char* err) {
+            cout << "Error:" << err;
+        }
+    } else { //Multiple Conversions
+        
+    }
+}
 
 // Celsius to Fahrenheit, Single Value
 // Celsius to Fahrenheit, Multiple Values
 // Fahrenheit to Celsius, Single Value
 // Fahrenheit to Celsius, Multiple Values
-// Celsius to Fahrenheit, Multiple Values
-// Fahrenheit to Celsius, Single Value
-// Fahrenheit to Celsius, Multiple Values Celsius to Fahrenheit, Multiple Values
-// Fahrenheit to Celsius, Single Value
-// Fahrenheit to Celsius, Multiple Values Celsius to Fahrenheit, Multiple Values
-// Fahrenheit to Celsius, Single Value
-// Fahrenheit to Celsius, Multiple Values Celsius to Fahrenheit, Multiple Values
-// Fahrenheit to Celsius, Single Value
-// Fahrenheit to Celsius, Multiple Values Celsius to Fahrenheit, Multiple Values
-// Fahrenheit to Celsius, Single Value
-// Fahrenheit to Celsius, Multiple Values Celsius to Fahrenheit, Multiple Values
-// Fahrenheit to Celsius, Single Value
-// Fahrenheit to Celsius, Multiple Values
-// Values
-// Fahrenheit to Celsius, Single Value
-// Fahrenheit to Celsius, Multiple Values Celsius to Fahrenheit, Multiple Values
-// Fahrenheit to Celsius, Single Value
-// Fahrenheit to Celsius, Multiple Values Celsius to Fahrenheit, Multiple Values
-// Fahrenheit to Celsius, Single Value
-// Fahrenheit to Celsius, Multiple Values Celsius to Fahrenheit, Multiple Values
-// Fahrenheit to Celsius, Single Value
-// Fahrenheit to Celsius, Multiple Values
-// Celsius to Fahrenheit, Multiple Values
-// Fahrenheit to Celsius, Single Value
-// Fahrenheit to Celsius, Multiple Values
+
