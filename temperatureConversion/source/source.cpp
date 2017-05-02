@@ -27,12 +27,12 @@ int main() {
         float temperature, maxTemp;
         if (userResult == 1) {
             cout << userResult;
-            getTemperatureRange(userResult, temperature);
+            getTemperatureRange(userResult, temperature, maxTemp);
 
             celsiusToFahrenheit(temperature);
         } else {
             cout << userResult;
-            getTemperatureRange(userResult, temperature);
+            getTemperatureRange(userResult, temperature, maxTemp);
 
             fahrenheitToCelsius(temperature);
         }
@@ -172,8 +172,8 @@ void getTemperatureRange(int userResultF, float &temperatureF, float &maxTempF) 
 
 void displayConversions(int userResultF, float temperatureF, float maxTempF) {
     if (userResultF == 1 || userResultF == 3) {
-        cout << temperatureF
-    }else {
+        cout << temperatureF;
+    } else {
         int j;
         cout << "Please enter the Interval you wish to go by.\n:";
         cin >> j;
@@ -188,17 +188,17 @@ void displayConversions(int userResultF, float temperatureF, float maxTempF) {
             cout << "Error: " << err;
         }
 
-        if (userResult == 2) {
+        if (userResultF == 2) {
             cout << "\n\n\tCelsius\t\tFahrenheit";
 
             for (int i = temperatureF; i < maxTempF; i = i + j) {
-            cout << "\n\t" << 
+            cout << "\n\t" << "test";
             }
         }else {
             cout << "\n\n\tFahrenheit\t\tCelsius";
 
             for (int i = temperatureF; i < maxTempF; i = i + j) {
-                fahrenheitTOCelsius(i);
+                fahrenheitToCelsius(i);
             }
         }
     }
