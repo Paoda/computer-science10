@@ -3,6 +3,8 @@
         "iostream": "cpp",
         "iosfwd": "cpp",
         "system_error": "cpp",
-        "xlocmon": "cpp"
+        "xlocmon": "cpp",
+        "streambuf": "cpp",
+        "xutility": "cpp"
     }
 }

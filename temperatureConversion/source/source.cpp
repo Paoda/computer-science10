@@ -18,34 +18,42 @@ float fahrenheitToCelsius(float fahrenheitF);
 float celsiusToFahrenheit(float celsiusF);
 
 int main() {
+    //setting up setprecision();
+    cout.setf(ios::fixed, ios::floatfield);
+    cout.setf(ios::showpoint);
+
     int userResult;
+    float maxTemp;
 
     cout << "Welcome to Rekai Musuka's Temperature Converter";
     userResult = getConversionMethod();
 
     if (userResult == 1 || userResult == 3) {
-        float temperature, maxTemp;
+        float temperature;
+
         if (userResult == 1) {
-            cout << userResult;
             getTemperatureRange(userResult, temperature, maxTemp);
 
-            celsiusToFahrenheit(temperature);
+            maxTemp = celsiusToFahrenheit(temperature);
 
             displayConversions(userResult, temperature, maxTemp);
         } else {
-            cout << userResult;
             getTemperatureRange(userResult, temperature, maxTemp);
 
-            fahrenheitToCelsius(temperature);
+            maxTemp = fahrenheitToCelsius(temperature);
+
+            displayConversions(userResult, temperature, maxTemp);
         }
     } else {
-        float temperature, maxTemp;
+        float minTemp;
         if (userResult == 2) {
-            cout << userResult;
-            getTemperatureRange(userResult, temperature, maxTemp);
+            getTemperatureRange(userResult, minTemp, maxTemp);
+
+            displayConversions(userResult, minTemp, maxTemp);
         } else {
-            cout << userResult;
-            getTemperatureRange(userResult, temperature, maxTemp);
+            getTemperatureRange(userResult, minTemp, maxTemp);
+
+            displayConversions(userResult, minTemp, maxTemp);
         }
     }
 }
@@ -174,7 +182,12 @@ void getTemperatureRange(int userResultF, float &temperatureF, float &maxTempF) 
 
 void displayConversions(int userResultF, float temperatureF, float maxTempF) {
     if (userResultF == 1 || userResultF == 3) {
-        cout << temperatureF;
+       
+        if (userResultF == 1) { //Here we use temperatureF to be the original # we were converting and maxTempF to hold the converted temperature
+            cout << setprecision(2) << temperatureF << '\370' << 'C' << " Is equal to " << setprecision(2) << maxTempF << '\370' << 'F';
+        } else {
+           cout << setprecision(2) << temperatureF << '\370' << 'F' << " Is equal to " << setprecision(2) << maxTempF << '\370' << 'C';
+        }
     } else {
         int j;
         cout << "Please enter the Interval you wish to go by.\n:";
@@ -191,23 +204,21 @@ void displayConversions(int userResultF, float temperatureF, float maxTempF) {
         }
 
         if (userResultF == 2) {
-            cout << "\n\n\tCelsius\t\tFahrenheit";
+            cout << "\n\tCelsius\t\tFahrenheit";
+            cout << "\n\t" << "\t\t";
 
-            for (int i = temperatureF; i < maxTempF; i = i + j) {
-            cout << "\n\t" << "test";
+            for (float i = temperatureF; i < maxTempF; i = (float)i + (float)j) {
+                cout << "\n\t" << setprecision(2) << i << '\370' << "C\t\t" << setprecision(2) << celsiusToFahrenheit(i) << '\370' << 'F';
             }
         }else {
-            cout << "\n\n\tFahrenheit\t\tCelsius";
+            cout << "\n\tFahrenheit\t\tCelsius";
+            cout << "\n\t" << "\t\t";
 
-            for (int i = temperatureF; i < maxTempF; i = i + j) {
-                fahrenheitToCelsius(i);
+            for (float i = temperatureF; i < maxTempF; i = (float)i + (float)j) {
+                cout << "\n\t" << setprecision(2) << i << '\370' << "F\t\t" << setprecision(2) << celsiusToFahrenheit(i) << '\370' << 'C';
             }
         }
+        cout << "\n\n";
     }
 
 };
-
-// Celsius to Fahrenheit, Single Value
-// Celsius to Fahrenheit, Multiple Values
-// Fahrenheit to Celsius, Single Value
-// Fahrenheit to Celsius, Multiple Values
