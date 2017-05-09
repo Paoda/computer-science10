@@ -24,38 +24,62 @@ int main() {
 
     int userResult;
     float maxTemp;
+    char loopCont;
+        do {
+            cout << "Welcome to Rekai Musuka's Temperature Converter";
+            userResult = getConversionMethod();
 
-    cout << "Welcome to Rekai Musuka's Temperature Converter";
-    userResult = getConversionMethod();
+        if (userResult == 1 || userResult == 3) {
+            float temperature;
 
-    if (userResult == 1 || userResult == 3) {
-        float temperature;
+            if (userResult == 1) {
+                getTemperatureRange(userResult, temperature, maxTemp);
 
-        if (userResult == 1) {
-            getTemperatureRange(userResult, temperature, maxTemp);
+                maxTemp = celsiusToFahrenheit(temperature);
 
-            maxTemp = celsiusToFahrenheit(temperature);
+                displayConversions(userResult, temperature, maxTemp);
+            } else {
+                getTemperatureRange(userResult, temperature, maxTemp);
 
-            displayConversions(userResult, temperature, maxTemp);
+                maxTemp = fahrenheitToCelsius(temperature);
+
+                displayConversions(userResult, temperature, maxTemp);
+            }
         } else {
-            getTemperatureRange(userResult, temperature, maxTemp);
+            float minTemp;
+            if (userResult == 2) {
+                getTemperatureRange(userResult, minTemp, maxTemp);
 
-            maxTemp = fahrenheitToCelsius(temperature);
+                displayConversions(userResult, minTemp, maxTemp);
+            } else {
+                getTemperatureRange(userResult, minTemp, maxTemp);
 
-            displayConversions(userResult, temperature, maxTemp);
+                displayConversions(userResult, minTemp, maxTemp);
+            }
         }
-    } else {
-        float minTemp;
-        if (userResult == 2) {
-            getTemperatureRange(userResult, minTemp, maxTemp);
 
-            displayConversions(userResult, minTemp, maxTemp);
-        } else {
-            getTemperatureRange(userResult, minTemp, maxTemp);
+        cout << "\n\nDo you want to run this program again?";
+        cout << "\nY/y for yes";
+        cout << "\nN/n for no\n:";
+        cin >> loopCont;
 
-            displayConversions(userResult, minTemp, maxTemp);
+        try {
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore();
+                throw "Invalid Input. (Interval Input Field (Run Again Choice))";
+            }
+        } catch (char* err) {
+            cout << "Error: " << err;
         }
-    }
+
+        if (loopCont == 'y' || loopCont == 'Y') {
+            loopCont = 'Y';
+        }else {
+            loopCont = 'N';
+        }
+    }while (loopCont == 'Y');
+    
 }
 
 float fahrenheitToCelsius(float fahrenheitF) {
@@ -231,7 +255,7 @@ void displayConversions(int userResultF, float temperatureF, float maxTempF) {
                 cout << "\n\t" << setprecision(2) << i << '\370' << "F\t\t" << setprecision(2) << celsiusToFahrenheit(i) << '\370' << 'C';
             }
         }
-        cout << "\n\n";
+        cout << "\n";
     }
 
 };//end displayData
