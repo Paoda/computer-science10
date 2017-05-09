@@ -11,7 +11,7 @@ Outputs: Conversion of units of Temperature
 
 using namespace std;
 
-int getConversionMethod(); // Complete
+int getConversionMethod();
 void getTemperatureRange(int userResultF, float &temperatureF, float &maxTempF);
 void displayConversions(int userResultF, float temperatureF, float maxTempF);
 float fahrenheitToCelsius(float fahrenheitF);
@@ -135,7 +135,7 @@ int getConversionMethod() {
         }
     } while (menuExit == false);
     return 0;
-}
+}//end getTemperatureConversion
 
 void getTemperatureRange(int userResultF, float &temperatureF, float &maxTempF) {
     if (userResultF == 1 || userResultF == 3) { //Single Conversion
@@ -178,13 +178,13 @@ void getTemperatureRange(int userResultF, float &temperatureF, float &maxTempF) 
             cout << "Error: " << err;
         }
     }
-};
+};//end getTemperatureRange
 
 void displayConversions(int userResultF, float temperatureF, float maxTempF) {
     if (userResultF == 1 || userResultF == 3) {
        
         if (userResultF == 1) { //Here we use temperatureF to be the original # we were converting and maxTempF to hold the converted temperature
-            cout << setprecision(2) << temperatureF << '\370' << 'C' << " Is equal to " << setprecision(2) << maxTempF << '\370' << 'F';
+            cout << setprecision(2) << temperatureF << '\370' << 'C' << " Is equal to " << setprecision(2) << maxTempF << '\370' << 'F'; //\370 is equal to the degree symbol
         } else {
            cout << setprecision(2) << temperatureF << '\370' << 'F' << " Is equal to " << setprecision(2) << maxTempF << '\370' << 'C';
         }
@@ -204,21 +204,34 @@ void displayConversions(int userResultF, float temperatureF, float maxTempF) {
         }
 
         if (userResultF == 2) {
+
+            if (temperatureF > maxTempF) { //This makes entering minTemp and maxTemp backwards irrelavent
+                float tempVarF  = maxTempF;
+                maxTempF = temperatureF;
+                temperatureF = tempVarF;
+                
+            }
             cout << "\n\tCelsius\t\tFahrenheit";
             cout << "\n\t" << "\t\t";
 
-            for (float i = temperatureF; i < maxTempF; i = (float)i + (float)j) {
+            for (float i = temperatureF; i <= maxTempF; i = (float)i + (float)j) { //Echoing the final answer
                 cout << "\n\t" << setprecision(2) << i << '\370' << "C\t\t" << setprecision(2) << celsiusToFahrenheit(i) << '\370' << 'F';
             }
         }else {
+            if (temperatureF > maxTempF) { //This makes entering minTemp and maxTemp backwards irrelavent
+                float tempVarF  = maxTempF;
+                maxTempF = temperatureF;
+                temperatureF = tempVarF;
+
+            }
             cout << "\n\tFahrenheit\t\tCelsius";
             cout << "\n\t" << "\t\t";
 
-            for (float i = temperatureF; i < maxTempF; i = (float)i + (float)j) {
+            for (float i = temperatureF; i <= maxTempF; i = (float)i + (float)j) { //echoing the final answer
                 cout << "\n\t" << setprecision(2) << i << '\370' << "F\t\t" << setprecision(2) << celsiusToFahrenheit(i) << '\370' << 'C';
             }
         }
         cout << "\n\n";
     }
 
-};
+};//end displayData
