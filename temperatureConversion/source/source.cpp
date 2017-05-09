@@ -184,11 +184,10 @@ void displayConversions(int userResultF, float temperatureF, float maxTempF) {
     if (userResultF == 1 || userResultF == 3) {
        
         if (userResultF == 1) { //Here we use temperatureF to be the original # we were converting and maxTempF to hold the converted temperature
-            cout << setprecision(2) << temperatureF << '\370' << 'C' << " Is equal to " << setprecision(2) << maxTempF << '\370' << 'F';
+            cout << setprecision(2) << temperatureF << '\370' << 'C' << " Is equal to " << setprecision(2) << maxTempF << '\370' << 'F' << "\n\n";
         } else {
-           cout << setprecision(2) << temperatureF << '\370' << 'F' << " Is equal to " << setprecision(2) << maxTempF << '\370' << 'C';
-        }
-    } else {
+            cout << setprecision(2) << temperatureF << '\370' << 'F' << " Is equal to " << setprecision(2) << maxTempF << '\370' << 'C' << "\n\n";
+    }} else {
         int j;
         cout << "Please enter the Interval you wish to go by.\n:";
         cin >> j;
